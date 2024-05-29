@@ -1,0 +1,23 @@
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -q mThC.q
+#$ -l mres=8G,h_data=8G,h_vmem=64G
+#$ -cwd
+#$ -j y
+#$ -N swsc
+#$ -o swsc.log
+#
+# ----------------Modules------------------------- #
+module load bio/partitionfinder/UCE_SWSC
+#
+# ----------------Your Commands------------------- #
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+echo + NSLOTS = $NSLOTS
+
+#
+SWSCEN.py mafft-nexus-min-70per-taxa.nexus ./
+
+#
+echo = `date` job $JOB_NAME done
